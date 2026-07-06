@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>756 Surveys - testing area</title>
+    <title>756 Surveys - Testing area</title>
 
     <!-- ════════════════════════════════════════════════════════════
          1) COLE AQUI O SCRIPT DA MEDALLIA (troque a tag toda abaixo)
@@ -303,27 +303,27 @@
 <header>
     <div class="logo">
         <span class="logo-dot"></span>
-        MINHAS SURVEYS
+        576 Surveys
     </div>
     <a class="back-link" href="home.html">
         <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        VOLTAR
+        Back
     </a>
 </header>
 
 <main>
     <div class="page-header">
-        <p class="eyebrow">Ambiente de testes</p>
-        <h1>Survey de <strong>Teste</strong></h1>
-        <p class="page-desc">Survey via Medallia. Espere o SDK carregar e clique no formulário que quiser abrir.</p>
+        <p class="eyebrow">Test environment</p>
+        <h1><strong>Test</strong>Surveys</h1>
+        <p class="page-desc">Survey via Medallia. Wait for the SDK to load and click on the form you want to open.</p>
     </div>
 
     <div class="status-bar loading" id="statusBar">
         <span class="status-dot"></span>
-        <span id="statusText">Carregando SDK da Medallia…</span>
+        <span id="statusText">Loading Medallia SDK…</span>
     </div>
 
-    <p class="section-label">Formulários disponíveis</p>
+    <p class="section-label">Available forms</p>
 
     <!-- ════════════════════════════════════════════════════════════
          2) COLOQUE O(S) FORM ID(S) DA SUA SURVEY NO data-form-id ABAIXO
@@ -353,11 +353,11 @@
     </div>
 
     <div class="instructions">
-        <p class="instructions-title">Como usar</p>
+        <p class="instructions-title">How to test</p>
         <ol>
-            <li>Espere a barra de status acima mostrar "SDK pronto"</li>
-            <li>Clique no formulário que você quer abrir</li>
-            <li>O formulário da Medallia vai aparecer como um overlay na tela</li>
+            <li>Wait for the status bar above to show "SDK ready".</li>
+            <li>Click on the form you want to open.</li>
+            <li>The Medallia form will appear as an overlay on the screen.</li>
         </ol>
     </div>
 </main>
@@ -375,7 +375,7 @@
 
     function onSdkReady() {
         sdkReady = true;
-        setStatus('ready', '✓ SDK pronto — selecione um formulário pra abrir');
+        setStatus('ready', '✓ SDK ready — select a survey to open');
         cards.forEach(card => card.classList.add('sdk-ready'));
     }
 
@@ -384,7 +384,7 @@
     } else {
         window.addEventListener('neb_OnsiteLoaded', onSdkReady);
         setTimeout(() => {
-            if (!sdkReady) setStatus('error', '⚠ Tempo esgotado — tente recarregar a página');
+            if (!sdkReady) setStatus('error', "⚠ Time's up — try reloading the page");
         }, 10000);
     }
 
@@ -395,12 +395,12 @@
             if (window.KAMPYLE_ONSITE_SDK?.showForm) {
                 try {
                     window.KAMPYLE_ONSITE_SDK.showForm(formId);
-                    setStatus('info', `Abrindo formulário #${formId}`);
+                    setStatus('info', `Opening survey #${formId}`);
                 } catch (e) {
-                    setStatus('error', `Erro ao abrir o formulário #${formId}`);
+                    setStatus('error', `Error opening the survey#${formId}`);
                 }
             } else {
-                setStatus('error', 'SDK não está pronto — recarregue a página');
+                setStatus('error', 'SDK is not ready — reload the page');
             }
         });
     });
